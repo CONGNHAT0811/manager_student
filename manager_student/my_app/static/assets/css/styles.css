@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+}
+#container {
+    margin: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+.sidebar_student {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+}
+.text-sidebar {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    order: -1; /* Chuyển phần chữ lên đầu sidebar */
+}
+.search-and-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-container {
+    display: flex;
+    align-items: center;
+}
+.btn {
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn i {
+    margin-right: 5px;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+}
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+.sidebar_student {
+    margin-bottom: 20px;
+    padding: 0 10px;
+    display: ruby-text;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-sidebar {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 20px;
+    order: 1; /* Đẩy nút xuống cuối sidebar */
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+.btn-delete{
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #9b1d1d;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

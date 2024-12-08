@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Giáo Viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/add.css') }}">
+</head>
+<body>
+{% extends "main.html" %}
+{% block title %}Thêm Giáo Viên{% endblock %}
+{% block cont %}
+    <div id="add_container">
+        <p>Thêm Giáo Viên</p>
+        {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        <form action="/add_teacher" method="post">
+            <div class="form-group">
+                <label for="teacher_code">Mã Giáo Viên:</label>
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="teacher_code" name="teacher_code" placeholder="Mã Giáo Viên" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Họ & Tên:</label>
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" name="name" placeholder="Tên" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số Điện Thoại:</label>
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phone" name="phone" placeholder="Số Điện Thoại" required>
+            </div>
+            <div class="form-group">
+                <label for="degree">Bằng Cấp:</label>
+                <i class="fas fa-graduation-cap"></i>
+                <input type="text" id="degree" name="degree" placeholder="Bằng Cấp" required>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Quốc Tịch:</label>
+                <i class="fas fa-globe"></i>
+                <input type="text" id="nationality" name="nationality" placeholder="Quốc Tịch" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Bộ Môn:</label>
+                <i class="fas fa-building"></i>
+                <input type="text" id="department" name="department" placeholder="Bộ Môn" required>
+            </div>
+            <div class="form-group">
+                <label for="class_name">Tên Lớp:</label>
+                <i class="fas fa-chalkboard"></i>
+                <input type="text" id="class_name" name="class_name" placeholder="Tên Lớp" required>
+            </div>
+            <div class="form-group">
+                <label for="date_of_birth">Ngày Sinh:</label>
+                <i class="fas fa-calendar"></i>
+                <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Ngày Sinh" required>
+            </div>
+            <div class="btn-save-close">
+                <div class="btn-save">
+                    <button type="submit">
+                        <i class="fas fa-save"></i> Lưu
+                    </button>
+                </div>
+                <div class="btn-close">
+                    <button type="button" onclick="window.location.href='/teacher';">
+                        <i class="fas fa-times"></i> Đóng
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+</body>
+</html>

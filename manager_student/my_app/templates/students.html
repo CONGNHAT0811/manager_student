@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+    
+</head>
+<body>
+{% extends "main.html" %}
+{% block title %}List Of Student{% endblock %}
+{% block cont %}
+    <div id="container">
+        <div class="sidebar_student">
+            <div class="text-sidebar">
+                Sinh Viên
+            </div>
+            <div class="btn-addstudent">
+                <a href="/add_students" class="add-btn">
+                    Add Student <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Mã Sinh Viên</th>
+                <th>Tên Sinh Viên</th>
+                <th>Ngày Sinh</th>
+                <th>Lớp</th>
+                <th>Khoa</th>
+                <th>Actions</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student[0] }}</td>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[15] }}</td>
+                <td>{{ student[16] }}</td>
+
+                <td>
+                    <a href="/update_student/{{ student[1] }}"><button class="btn"><i class="fas fa-edit"></i>Edit</button></a>
+                    <form action="/delete_student/{{ student[1] }}" method="post" style="display: inline-block;">
+                        <button class="btn-delete" type="submit"><i class="fas fa-trash-alt"></i>Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Điểm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/add.css') }}">
+    <script>
+        function calculateGPA() {
+            // Lấy giá trị từ các trường nhập liệu
+            let gradeA = parseFloat(document.getElementById('grade').value) || 0;
+            let gradeB = parseFloat(document.getElementById('score_b').value) || 0;
+            let gradeC = parseFloat(document.getElementById('score_c').value) || 0;
+        
+            // Tính GPA theo tỷ lệ (60% điểm A, 30% điểm B, 10% điểm C)
+            let gpa = (gradeA * 0.6 + gradeB * 0.3 + gradeC * 0.1);
+        
+            // Hiển thị GPA
+            document.getElementById('gpa').value = gpa.toFixed(2);
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            // Gọi hàm tính GPA mỗi khi giá trị của các trường điểm thay đổi
+            document.getElementById('grade').addEventListener('input', calculateGPA);
+            document.getElementById('score_b').addEventListener('input', calculateGPA);
+            document.getElementById('score_c').addEventListener('input', calculateGPA);
+        
+            // Tính GPA ban đầu khi trang được tải
+            calculateGPA();
+        });
+        
+    </script>
+</head>
+<body>
+{% extends "main.html" %}
+{% block title %}Thêm Điểm{% endblock %}
+{% block cont %}
+    <div id="add_container">
+        <p>Thêm Điểm</p>
+        {% if error %}
+        <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <form action="/add_score" method="post">
+            <div class="form-group">
+                <label for="student_code">Mã Sinh Viên:</label>
+                <i class="fas fa-user"></i>
+                <input type="text" id="student_code" name="student_code" placeholder="Mã Sinh Viên" required>
+            </div>
+            <div class="form-group">
+                <label for="student_name">Tên Sinh Viên:</label>
+                <i class="fas fa-user"></i>
+                <input type="text" id="student_name" name="student_name" placeholder="Tên Sinh Viên" required>
+            </div>
+            <div class="form-group">
+                <label for="subject_name">Tên Môn:</label>
+                <i class="fas fa-book"></i>
+                <input type="text" id="subject_name" name="subject_name" placeholder="Tên Môn Học" required>
+            </div>
+            <div class="form-group">
+                <label for="grade">Điểm A:</label>
+                <i class="fas fa-star"></i>
+                <input type="text" id="grade" name="grade" placeholder="Điểm A" required>
+            </div>
+            <div class="form-group">
+                <label for="score_b">Điểm B:</label>
+                <i class="fas fa-star"></i>
+                <input type="text" id="score_b" name="score_b" placeholder="Điểm B" required>
+            </div>
+            <div class="form-group">
+                <label for="score_c">Điểm C:</label>
+                <i class="fas fa-star"></i>
+                <input type="text" id="score_c" name="score_c" placeholder="Điểm C" required>
+            </div>
+            <div class="form-group">
+                <label for="gpa">GPA:</label>
+                <i class="fas fa-calculator"></i>
+                <input type="text" id="gpa" name="gpa" placeholder="GPA" readonly>
+            </div>
+            <div class="btn-save-close">
+                <div class="btn-save">
+                    <button type="submit">
+                        <i class="fas fa-save"></i> Lưu
+                    </button>
+                </div>
+                <div class="btn-close">
+                    <button type="button" onclick="window.location.href='/score';">
+                        <i class="fas fa-times"></i> Đóng
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+</body>
+</html>

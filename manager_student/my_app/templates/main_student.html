@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+</head>
+<body>
+    <div id="main">
+        <div class="subheader">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='assets/image/logo/humg.png') }}" alt="Logo">
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search..">
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="nav" id="nav">
+                <a href="#" id="toggle-nav"><i class="fas fa-chevron-right"></i><span>Close</span></a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> <span> Students</span></a>
+                <a href="#"><i class="fas fa-clipboard-list"></i> <span>Score</span></a>
+                <a href="#"><i class="fas fa-book"></i> <span>Register</span></a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> <span>Timetable</span></a>
+                <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> <span>Log Out</span></a>
+            </div>
+            <div class="content">
+                {% block cont %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('#toggle-nav').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('expanded');
+            document.querySelector('.content-wrapper').classList.toggle('expanded');
+            this.classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>

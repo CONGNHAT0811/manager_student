@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+</head>
+<body>
+{% extends "main.html" %}
+{% block title %}Class Management{% endblock %}
+{% block cont %}
+    <div id="container">
+        <div class="sidebar_student">
+            <div class="text-sidebar">
+                Lớp Học
+            </div>
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <div class="btn-addstudent">
+                <a href="/add_class" class="add-btn">
+                    Thêm Lớp  <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Khoa</th>
+                    <th>Mã Lớp </th>
+                    <th>Tên Lớp</th>
+                    <th>Năm Bắt Đầu</th>
+                    <th>Thời Gian Học</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class_item in classes %}
+                    <tr>
+                        <td>{{ class_item[0] }}</td>
+                        <td>{{ class_item[1] }}</td>
+                        <td>{{ class_item[2] }}</td>
+                        <td>{{ class_item[3] }}</td>
+                        <td>{{ class_item[4] }}</td>
+                        <td>{{ class_item[5] }}</td>
+                        <td>
+                            <a href="/update_class/{{ class_item[0] }}"><button class="btn"><i class="fas fa-edit"></i>Edit</button></a>
+                            <form action="/delete_class/{{ class_item[0] }}" method="post" style="display: inline-block;">
+                                <button class="btn-delete" type="submit"><i class="fas fa-trash-alt"></i>Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+</body>
+</html>
